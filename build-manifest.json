@@ -1,0 +1,108 @@
+{
+  "polyfillFiles": [
+    "static/chunks/polyfills-c67a75d1b6f99dc8.js"
+  ],
+  "devFiles": [],
+  "ampDevFiles": [],
+  "lowPriorityFiles": [
+    "static/SJiloHqJKegN9Tasp3JWr/_buildManifest.js",
+    "static/SJiloHqJKegN9Tasp3JWr/_ssgManifest.js"
+  ],
+  "rootMainFiles": [],
+  "pages": {
+    "/": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/668-d227a0b328891b55.js",
+      "static/css/cecdbce2880c059c.css",
+      "static/chunks/pages/index-a50b5f73cc386278.js"
+    ],
+    "/_app": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/css/08679fc523d06ac6.css",
+      "static/chunks/pages/_app-8db591a8d37118e9.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/pages/_error-a4ba2246ff8fb532.js"
+    ],
+    "/badges-og-maerker": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/668-d227a0b328891b55.js",
+      "static/css/cecdbce2880c059c.css",
+      "static/chunks/pages/badges-og-maerker-aab5ad50466ba22a.js"
+    ],
+    "/caps": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/668-d227a0b328891b55.js",
+      "static/css/cecdbce2880c059c.css",
+      "static/chunks/pages/caps-016dc8094d12d511.js"
+    ],
+    "/daabskjoler": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/pages/daabskjoler-7e0b3a8f4e037148.js"
+    ],
+    "/galleri": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/668-d227a0b328891b55.js",
+      "static/css/cecdbce2880c059c.css",
+      "static/chunks/pages/galleri-bff1bc5264e55992.js"
+    ],
+    "/grafisk-arbejde": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/457-66289a8aa60f6ff7.js",
+      "static/chunks/pages/grafisk-arbejde-8aafcaece89568e3.js"
+    ],
+    "/kontakt": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/681-defaf037f1ad4792.js",
+      "static/chunks/pages/kontakt-04bd5314aa2dcd0d.js"
+    ],
+    "/materiale": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/pages/materiale-2ccc67040934000a.js"
+    ],
+    "/ordre-formular": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/681-defaf037f1ad4792.js",
+      "static/chunks/313-468f0ca30e3b87bf.js",
+      "static/chunks/pages/ordre-formular-beaeab85147b073d.js"
+    ],
+    "/services": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/pages/services-ea04ced430bb1376.js"
+    ],
+    "/skrifttyper": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/668-d227a0b328891b55.js",
+      "static/css/cecdbce2880c059c.css",
+      "static/chunks/pages/skrifttyper-fc6bb370586faaca.js"
+    ]
+  },
+  "ampFirstPages": []
+}

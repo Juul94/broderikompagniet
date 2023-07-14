@@ -1,0 +1,17 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/badges-og-maerker": "pages/badges-og-maerker.html",
+  "/caps": "pages/caps.html",
+  "/daabskjoler": "pages/daabskjoler.html",
+  "/galleri": "pages/galleri.html",
+  "/grafisk-arbejde": "pages/grafisk-arbejde.html",
+  "/": "pages/index.html",
+  "/kontakt": "pages/kontakt.html",
+  "/materiale": "pages/materiale.html",
+  "/ordre-formular": "pages/ordre-formular.html",
+  "/services": "pages/services.html",
+  "/skrifttyper": "pages/skrifttyper.html",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}

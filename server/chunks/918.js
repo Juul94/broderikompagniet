@@ -78,9 +78,12 @@ const Content = (0,_mui_system__WEBPACK_IMPORTED_MODULE_0__.styled)("div")(({ th
 const NewSection = (0,_mui_system__WEBPACK_IMPORTED_MODULE_0__.styled)("div")({
     marginTop: "16px"
 });
-/********** FORMS **********/ const FormContainer = (0,_mui_system__WEBPACK_IMPORTED_MODULE_0__.styled)("div")({
-    maxWidth: " 350px"
-});
+/********** FORMS **********/ const FormContainer = (0,_mui_system__WEBPACK_IMPORTED_MODULE_0__.styled)("div")(({ theme  })=>({
+        maxWidth: "50%",
+        [theme.breakpoints.down("md")]: {
+            maxWidth: "100%"
+        }
+    }));
 const FileUploadLabel = (0,_mui_system__WEBPACK_IMPORTED_MODULE_0__.styled)("div")({
     color: "#333333",
     fontWeight: "bold",

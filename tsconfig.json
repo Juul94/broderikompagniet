@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@features/*": ["src/features/*"],
+            "@components/*": ["src/shared/components/*"],
+            "@contexts/*": ["src/shared/contexts/*"],
+            "@icons/*": ["public/assets/icons/*"],
+            "@utilities/*": ["src/utils/*"],
+            "@assets/*": ["public/assets/*"],
+            "@helpers/*": ["src/shared/helpers/*"],
+            "@layouts/*": ["src/shared/layouts/*"],
+            "@hooks/*": ["src/shared/hooks/*"],
+            "@shared/*": ["src/shared/*"]
+        },
+        "target": "es6",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "useUnknownInCatchVariables": false,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "preserve",
+        "incremental": true,
+        "typeRoots": ["node_modules/@types", "src/types"]
+    },
+    "include": ["src", "src/index.d.ts"],
+    "exclude": ["node_modules"]
+}

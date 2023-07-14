@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/bNruiUCR9Md0Pw8iQUJzA/_buildManifest.js",
-    "static/bNruiUCR9Md0Pw8iQUJzA/_ssgManifest.js"
+    "static/KWtlIeQSkGEmsIsqHRGgO/_buildManifest.js",
+    "static/KWtlIeQSkGEmsIsqHRGgO/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -22,8 +22,8 @@
       "static/chunks/webpack-9b0e45c24ba97727.js",
       "static/chunks/framework-89d26d6c86bdc815.js",
       "static/chunks/main-24e0430fcd05b8fe.js",
-      "static/css/08679fc523d06ac6.css",
-      "static/chunks/pages/_app-8db591a8d37118e9.js"
+      "static/css/7c85e4398fcabf57.css",
+      "static/chunks/pages/_app-33d999a0a0d2ba06.js"
     ],
     "/_error": [
       "static/chunks/webpack-9b0e45c24ba97727.js",
@@ -65,15 +65,20 @@
       "static/chunks/webpack-9b0e45c24ba97727.js",
       "static/chunks/framework-89d26d6c86bdc815.js",
       "static/chunks/main-24e0430fcd05b8fe.js",
-      "static/chunks/457-66289a8aa60f6ff7.js",
-      "static/chunks/pages/grafisk-arbejde-8aafcaece89568e3.js"
+      "static/chunks/163-70a182f7fffacb54.js",
+      "static/chunks/pages/grafisk-arbejde-3368714b79039cb8.js"
     ],
     "/kontakt": [
       "static/chunks/webpack-9b0e45c24ba97727.js",
       "static/chunks/framework-89d26d6c86bdc815.js",
       "static/chunks/main-24e0430fcd05b8fe.js",
-      "static/chunks/681-defaf037f1ad4792.js",
-      "static/chunks/pages/kontakt-04bd5314aa2dcd0d.js"
+      "static/chunks/pages/kontakt-0d623687d56da21a.js"
+    ],
+    "/login": [
+      "static/chunks/webpack-9b0e45c24ba97727.js",
+      "static/chunks/framework-89d26d6c86bdc815.js",
+      "static/chunks/main-24e0430fcd05b8fe.js",
+      "static/chunks/pages/login-8439cdb4636740ac.js"
     ],
     "/materiale": [
       "static/chunks/webpack-9b0e45c24ba97727.js",
@@ -85,9 +90,8 @@
       "static/chunks/webpack-9b0e45c24ba97727.js",
       "static/chunks/framework-89d26d6c86bdc815.js",
       "static/chunks/main-24e0430fcd05b8fe.js",
-      "static/chunks/681-defaf037f1ad4792.js",
-      "static/chunks/313-468f0ca30e3b87bf.js",
-      "static/chunks/pages/ordre-formular-beaeab85147b073d.js"
+      "static/chunks/643-ed3b1e19dcc9300f.js",
+      "static/chunks/pages/ordre-formular-047783364caa0f97.js"
     ],
     "/services": [
       "static/chunks/webpack-9b0e45c24ba97727.js",

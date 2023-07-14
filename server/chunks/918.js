@@ -70,6 +70,9 @@ const Content = (0,_mui_system__WEBPACK_IMPORTED_MODULE_0__.styled)("div")(({ th
         padding: "24px",
         [theme.breakpoints.down("sm")]: {
             padding: "16px"
+        },
+        ".MuiFormControl-root": {
+            marginBottom: "16px"
         }
     }));
 const NewSection = (0,_mui_system__WEBPACK_IMPORTED_MODULE_0__.styled)("div")({

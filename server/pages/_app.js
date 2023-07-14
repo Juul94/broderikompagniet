@@ -2,7 +2,7 @@
 (() => {
 var exports = {};
 exports.id = 888;
-exports.ids = [888];
+exports.ids = [888,459];
 exports.modules = {
 
 /***/ 8013:
@@ -21,6 +21,72 @@ var jsx_runtime_ = __webpack_require__(997);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
+// EXTERNAL MODULE: external "@mui/system"
+var system_ = __webpack_require__(7986);
+;// CONCATENATED MODULE: external "@mui/material/styles"
+const styles_namespaceObject = require("@mui/material/styles");
+;// CONCATENATED MODULE: ./src/theme/baseThemeOptions.ts
+
+
+const theme = (0,styles_namespaceObject.createTheme)({
+    spacing: (factor)=>`${8 * factor}px`,
+    breakpoints: {
+        values: {
+            xs: 300,
+            sm: 600,
+            md: 1024,
+            lg: 1300,
+            ml: 1700,
+            xl: 1920
+        }
+    },
+    palette: {
+        primary: {
+            main: "#00A8E8",
+            light: "#66D1FF",
+            dark: "#00779F"
+        },
+        secondary: {
+            main: "#FF7600",
+            light: "#FFA733",
+            dark: "#CC5A00"
+        },
+        background: {
+            default: "#f3f3f4",
+            light: "#E5E7EB",
+            dark: "#D1D5DB"
+        },
+        success: {
+            main: "#14B8A6",
+            light: "#43C6B7",
+            dark: "#0E8074"
+        },
+        error: {
+            main: "#D14343",
+            light: "#DA6868",
+            dark: "#922E2E"
+        },
+        warning: {
+            main: "#FFB020",
+            light: "#FFBF4C",
+            dark: "#B27B16"
+        },
+        info: {
+            main: "#2196F3",
+            light: "#64B6F7",
+            dark: "#0B79D0"
+        },
+        text: {
+            primary: "#111827",
+            secondary: "#6B7280",
+            disabled: "rgba(17, 24, 39, 0.48)"
+        }
+    }
+});
+/* harmony default export */ const baseThemeOptions = (theme);
+
+// EXTERNAL MODULE: ./src/pages/login.tsx
+var login = __webpack_require__(1047);
 ;// CONCATENATED MODULE: external "@mui/material/Toolbar"
 const Toolbar_namespaceObject = require("@mui/material/Toolbar");
 var Toolbar_default = /*#__PURE__*/__webpack_require__.n(Toolbar_namespaceObject);
@@ -420,83 +486,44 @@ const Layout = ({ children  })=>{
 };
 /* harmony default export */ const layout = (Layout);
 
-// EXTERNAL MODULE: external "@mui/system"
-var system_ = __webpack_require__(7986);
-;// CONCATENATED MODULE: external "@mui/material/styles"
-const styles_namespaceObject = require("@mui/material/styles");
-;// CONCATENATED MODULE: ./src/theme/baseThemeOptions.ts
-
-
-const theme = (0,styles_namespaceObject.createTheme)({
-    spacing: (factor)=>`${8 * factor}px`,
-    breakpoints: {
-        values: {
-            xs: 300,
-            sm: 600,
-            md: 1024,
-            lg: 1300,
-            ml: 1700,
-            xl: 1920
-        }
-    },
-    palette: {
-        primary: {
-            main: "#00A8E8",
-            light: "#66D1FF",
-            dark: "#00779F"
-        },
-        secondary: {
-            main: "#FF7600",
-            light: "#FFA733",
-            dark: "#CC5A00"
-        },
-        background: {
-            default: "#f3f3f4",
-            light: "#E5E7EB",
-            dark: "#D1D5DB"
-        },
-        success: {
-            main: "#14B8A6",
-            light: "#43C6B7",
-            dark: "#0E8074"
-        },
-        error: {
-            main: "#D14343",
-            light: "#DA6868",
-            dark: "#922E2E"
-        },
-        warning: {
-            main: "#FFB020",
-            light: "#FFBF4C",
-            dark: "#B27B16"
-        },
-        info: {
-            main: "#2196F3",
-            light: "#64B6F7",
-            dark: "#0B79D0"
-        },
-        text: {
-            primary: "#111827",
-            secondary: "#6B7280",
-            disabled: "rgba(17, 24, 39, 0.48)"
-        }
-    }
-});
-/* harmony default export */ const baseThemeOptions = (theme);
-
 ;// CONCATENATED MODULE: ./src/pages/_app.tsx
 
 
 
 
 
+
+
 const App = ({ Component , pageProps  })=>{
+    const { 0: loggedIn , 1: setLoggedIn  } = (0,external_react_.useState)(false);
+    const { 0: loading , 1: setLoading  } = (0,external_react_.useState)(true);
+    (0,external_react_.useEffect)(()=>{
+        const isAuthenticated = localStorage.getItem("isAuthenticated");
+        if (isAuthenticated === "true") {
+            setLoggedIn(true);
+        }
+        setLoading(false);
+    }, []);
+    const handleLogin = ()=>{
+        localStorage.setItem("isAuthenticated", "true");
+        setLoggedIn(true);
+    };
+    const handleLogout = ()=>{
+        localStorage.removeItem("isAuthenticated");
+        setLoggedIn(false);
+    };
+    if (loading) {
+        return null;
+    }
     return /*#__PURE__*/ jsx_runtime_.jsx(system_.ThemeProvider, {
         theme: baseThemeOptions,
-        children: /*#__PURE__*/ jsx_runtime_.jsx(layout, {
+        children: loggedIn ? /*#__PURE__*/ jsx_runtime_.jsx(layout, {
             children: /*#__PURE__*/ jsx_runtime_.jsx(Component, {
-                ...pageProps
+                ...pageProps,
+                onLogout: handleLogout
             })
+        }) : /*#__PURE__*/ jsx_runtime_.jsx(login["default"], {
+            onLogin: handleLogin
         })
     });
 };
@@ -533,6 +560,13 @@ module.exports = require("@mui/material/Box");
 
 /***/ }),
 
+/***/ 3819:
+/***/ ((module) => {
+
+module.exports = require("@mui/material/Button");
+
+/***/ }),
+
 /***/ 7934:
 /***/ ((module) => {
 
@@ -544,6 +578,13 @@ module.exports = require("@mui/material/IconButton");
 /***/ ((module) => {
 
 module.exports = require("@mui/material/MenuItem");
+
+/***/ }),
+
+/***/ 6042:
+/***/ ((module) => {
+
+module.exports = require("@mui/material/TextField");
 
 /***/ }),
 
@@ -565,6 +606,13 @@ module.exports = require("@mui/material/useMediaQuery");
 /***/ ((module) => {
 
 module.exports = require("@mui/system");
+
+/***/ }),
+
+/***/ 2296:
+/***/ ((module) => {
+
+module.exports = require("formik");
 
 /***/ }),
 
@@ -748,6 +796,13 @@ module.exports = require("react");
 
 module.exports = require("react/jsx-runtime");
 
+/***/ }),
+
+/***/ 5609:
+/***/ ((module) => {
+
+module.exports = require("yup");
+
 /***/ })
 
 };
@@ -757,7 +812,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [676,664,918], () => (__webpack_exec__(8013)));
+var __webpack_exports__ = __webpack_require__.X(0, [676,664,918,47], () => (__webpack_exec__(8013)));
 module.exports = __webpack_exports__;
 
 })();

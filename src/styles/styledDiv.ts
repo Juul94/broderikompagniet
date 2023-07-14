@@ -55,6 +55,9 @@ export const Content = styled('div')(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
         padding: '16px',
     },
+    '.MuiFormControl-root': {
+        marginBottom: '16px',
+    },
 }));
 
 export const NewSection = styled('div')({

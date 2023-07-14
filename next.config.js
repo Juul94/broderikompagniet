@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+    output: 'export',
     distDir: 'build',
     reactStrictMode: true,
     webpack(config) {
@@ -15,7 +16,6 @@ const nextConfig = {
             poll: 1000,
             aggregateTimeout: 300,
         };
-
         return config;
     },
     module: {
@@ -38,5 +38,14 @@ const nextConfig = {
         },
     },
 };
+
+// Check if running on GitHub Actions
+if (process.env.GITHUB_ACTIONS === 'true') {
+    // Apply configurations specific to GitHub
+    nextConfig.basePath = '/broderikompagniet';
+    nextConfig.images = {
+        unoptimized: true,
+    };
+}
 
 module.exports = nextConfig;

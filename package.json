@@ -9,7 +9,8 @@
         "deploy": "gh-pages -d build",
         "build": "next build",
         "dev": "next dev",
-        "lint": "next lint"
+        "lint": "next lint",
+        "export": "next export"
     },
     "dependencies": {
         "@auth0/auth0-spa-js": "^1.19.4",

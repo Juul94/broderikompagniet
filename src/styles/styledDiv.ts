@@ -66,9 +66,12 @@ export const NewSection = styled('div')({
 
 /********** FORMS **********/
 
-export const FormContainer = styled('div')({
-    maxWidth: ' 350px',
-});
+export const FormContainer = styled('div')(({ theme }) => ({
+    maxWidth: '50%',
+    [theme.breakpoints.down('md')]: {
+        maxWidth: '100%',
+    },
+}));
 
 export const FileUploadLabel = styled('div')({
     color: '#333333',

@@ -22,6 +22,7 @@ import { FormContainer, SectionHeading } from 'src/styles/styledDiv';
 import materiale from '../data/orderFormular';
 import { useEffect, useRef, useState } from 'react';
 import ConditionValue from 'src/components/displayConditionValue';
+import { useResponsiveQueries } from '@utilities/mediaQueries';
 
 interface OrdreFormular {
     forespoergsel: '';
@@ -42,6 +43,7 @@ interface OrdreFormular {
 }
 
 const OrdreFormular = () => {
+    const { isTablet } = useResponsiveQueries();
     const { bloedt, fleeceOl, haardt, placering } = materiale;
 
     const [resetKey, setResetKey] = useState(0);

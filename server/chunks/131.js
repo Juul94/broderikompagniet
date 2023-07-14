@@ -128,8 +128,7 @@ const ImageGallery = ({ images , thumbSize , largeContent  })=>{
                 children: images.map((image, index)=>{
                     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_lazy_load_image_component__WEBPACK_IMPORTED_MODULE_11__.LazyLoadImage, {
                         style: {
-                            maxWidth: thumbSize || (isMobile ? "200px" : "100px"),
-                            maxHeight: thumbSize || (isMobile ? "200px" : "100px")
+                            maxWidth: isMobile ? "250px" : thumbSize
                         },
                         src: image.url,
                         alt: image.title,

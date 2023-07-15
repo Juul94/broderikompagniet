@@ -12,15 +12,12 @@ const HomePage: NextPage = () => {
     return (
         <ContainerHalf>
             <Box>
-                <SectionHeading>Velkommen til Broderi Kompagniet</SectionHeading>
+                <SectionHeading variant='h5'>Velkommen til Broderi Kompagniet</SectionHeading>
 
                 <Box
                     sx={{
                         flex: '0 0 65%',
                         pr: 4,
-                        '.MuiTypography-root': {
-                            lineHeight: '30px',
-                        },
                     }}>
                     <Typography
                         sx={{

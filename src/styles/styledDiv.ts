@@ -58,6 +58,9 @@ export const Content = styled('div')(({ theme }) => ({
     '.MuiFormControl-root': {
         marginBottom: '16px',
     },
+    '.MuiTypography-body1': {
+        lineHeight: '25px',
+    },
 }));
 
 export const NewSection = styled('div')({
@@ -95,6 +98,7 @@ export const SectionHeading = styled(Typography)(({ theme }) => ({
     color: theme.palette.primary.main,
     marginBottom: '16px',
     fontWeight: 500,
+    lineHeight: '30px',
 }));
 
 export const TypographySpace = styled(Typography)({

@@ -11,6 +11,7 @@ import routes from 'src/utils/routes';
 import logo from 'src/img/logo.jpg';
 import { ContainerBG, InnerContainerNoPadding, LogoImage } from '../../styles/styledDiv';
 import { useResponsiveQueries } from '@utilities/mediaQueries';
+import CustomMenuItems from './menuItems';
 
 export const Header: React.FC = () => {
     const { isTablet, isMobile } = useResponsiveQueries();
@@ -98,9 +99,9 @@ export const Header: React.FC = () => {
                                         onClick={handleMenuClose}
                                         sx={{
                                             a: {
-                                                color: isActive(route)
-                                                    ? 'primary.main'
-                                                    : 'text.primary',
+                                                // color: isActive(route)
+                                                //     ? 'primary.main'
+                                                //     : 'text.primary',
                                                 textDecoration: 'none',
                                             },
                                         }}
@@ -121,27 +122,7 @@ export const Header: React.FC = () => {
                                 flexDirection: 'row',
                                 alignItems: 'center',
                             }}>
-                            {routes.map(({ name, route }, index) => (
-                                <NextLink key={`${route}-${index}`} href={`/${route}`} passHref>
-                                    <MenuItem
-                                        disableRipple
-                                        sx={{
-                                            py: 0,
-                                            px: '7.5px',
-                                            textAlign: 'right',
-                                            color: isActive(route)
-                                                ? 'primary.main'
-                                                : 'text.primary',
-                                            textDecoration: 'none',
-                                            '&:hover': {
-                                                backgroundColor: 'transparent',
-                                                color: 'primary.main',
-                                            },
-                                        }}>
-                                        {name}
-                                    </MenuItem>
-                                </NextLink>
-                            ))}
+                            <CustomMenuItems menuItems={routes} />
                         </Box>
                     )}
                 </Toolbar>

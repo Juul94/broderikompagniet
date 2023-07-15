@@ -1,11 +1,17 @@
-const routes = [
+interface RoutesProps {
+    name: string;
+    route?: string;
+    children?: RoutesProps[];
+}
+
+const routes: RoutesProps[] = [
     {
         name: 'Home',
         route: '',
     },
     {
-        name: 'Ordre formular',
-        route: 'ordre-formular',
+        name: 'Bestilling',
+        route: 'bestilling',
     },
     {
         name: 'Galleri',
@@ -28,16 +34,21 @@ const routes = [
         route: 'grafisk-arbejde',
     },
     {
-        name: 'Dåbskjoler',
-        route: 'daabskjoler',
-    },
-    {
-        name: 'Caps',
-        route: 'caps',
-    },
-    {
-        name: 'Badges & Mærker',
-        route: 'badges-og-maerker',
+        name: 'Kategori',
+        children: [
+            {
+                name: 'Dåbskjoler',
+                route: 'daabskjoler',
+            },
+            {
+                name: 'Caps',
+                route: 'caps',
+            },
+            {
+                name: 'Badges & Mærker',
+                route: 'badges-og-maerker',
+            },
+        ],
     },
 ];
 

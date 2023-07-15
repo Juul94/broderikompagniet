@@ -105,7 +105,11 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, thumbSize, l
                         <LazyLoadImage
                             key={`${image.title}-${index}`}
                             style={{
-                                maxWidth: isMobile ? '250px' : thumbSize,
+                                maxWidth: isMobile
+                                    ? thumbSize
+                                        ? '200px'
+                                        : '100px'
+                                    : thumbSize || '100px',
                             }}
                             src={image.url}
                             alt={image.title}

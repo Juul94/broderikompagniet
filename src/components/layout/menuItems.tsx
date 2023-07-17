@@ -11,9 +11,16 @@ interface MenuItem {
 interface CustomMenuItemsProps {
     menuItems: MenuItem[];
     currentRoute: string | boolean;
+    isTablet?: boolean;
+    handleMenuClose?: any;
 }
 
-const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({ menuItems, currentRoute }) => {
+const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({
+    menuItems,
+    currentRoute,
+    isTablet,
+    handleMenuClose,
+}) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
     const open = Boolean(anchorEl);
@@ -30,7 +37,7 @@ const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({ menuItems, currentRou
         if (`/${route}` === currentRoute) {
             return 'primary.main';
         }
-        return 'inherit'; // Default color for non-active children
+        return 'inherit';
     };
 
     const IsActiveParent = (
@@ -42,13 +49,80 @@ const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({ menuItems, currentRou
         if (`/${route}` === currentRoute || open) {
             return 'primary.main';
         } else if (children && children.some((child) => `/${child.route}` === currentRoute)) {
-            return 'primary.main'; // If any child is active, make the parent active
+            return 'primary.main';
         } else {
             return 'text.primary';
         }
     };
 
-    const renderMenuItem = (menuItem: MenuItem) => {
+    const renderMenuItemTablet = (menuItem: MenuItem) => {
+        const { name, route, children } = menuItem;
+
+        if (children && children.length > 0) {
+            return (
+                <>
+                    <MenuItem
+                        disableRipple
+                        sx={{
+                            py: 0,
+                            px: '7.5px',
+                            textAlign: 'right',
+                            textDecoration: 'none',
+                            color: IsActive(route, currentRoute),
+                            '&:hover': {
+                                backgroundColor: 'transparent',
+                                color: 'primary.main',
+                            },
+                        }}>
+                        <Typography>{name}</Typography>
+                    </MenuItem>
+
+                    {children.map((child, index: number) => (
+                        <NextLink key={`${child.name}-${index}`} href={`/${child.route}`} passHref>
+                            <MenuItem
+                                disableRipple
+                                onClick={handleMenuClose}
+                                sx={{
+                                    px: 3,
+                                }}>
+                                <Typography
+                                    sx={{
+                                        color: IsActive(child.route, currentRoute),
+                                    }}>
+                                    {child.name}
+                                </Typography>
+                            </MenuItem>
+                        </NextLink>
+                    ))}
+                </>
+            );
+        } else {
+            return (
+                <>
+                    <NextLink key={name} href={`/${route}`} passHref>
+                        <MenuItem
+                            disableRipple
+                            onClick={handleMenuClose}
+                            sx={{
+                                py: 0,
+                                px: '7.5px',
+                                textAlign: 'right',
+                                textDecoration: 'none',
+                                color: IsActive(route, currentRoute),
+                                '&:hover': {
+                                    backgroundColor: 'transparent',
+                                    color: 'primary.main',
+                                },
+                            }}>
+                            <Typography>{name}</Typography>
+                        </MenuItem>
+                    </NextLink>
+                </>
+            );
+        }
+    };
+
+    const renderMenuItemDesktop = (menuItem: MenuItem) => {
         const { name, route, children } = menuItem;
 
         if (children && children.length > 0) {
@@ -71,7 +145,7 @@ const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({ menuItems, currentRou
                                 transition: 'none',
                             },
                         }}>
-                        <Typography>Kategori</Typography>
+                        <Typography>{name}</Typography>
                     </Button>
 
                     <Menu
@@ -123,7 +197,7 @@ const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({ menuItems, currentRou
         }
     };
 
-    return <>{menuItems.map(renderMenuItem)}</>;
+    return <>{menuItems.map(isTablet ? renderMenuItemTablet : renderMenuItemDesktop)}</>;
 };
 
 export default CustomMenuItems;

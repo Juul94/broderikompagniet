@@ -5,7 +5,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import NextLink from 'next/link';
 import routes from 'src/utils/routes';
 import logo from 'src/img/logo.jpg';
@@ -27,6 +26,14 @@ export const Header: React.FC = () => {
 
     const handleMenuClose = () => {
         setMenuAnchorEl(null);
+    };
+
+    const isActive = (route: string | undefined, currentRoute: string | boolean) => {
+        if (`/${route}` === currentRoute) {
+            return 'primary.main';
+        }
+
+        return 'inherit';
     };
 
     useEffect(() => {
@@ -68,7 +75,7 @@ export const Header: React.FC = () => {
                         </NextLink>
                     </>
 
-                    {isTablet && (
+                    {isTablet ? (
                         <>
                             <IconButton
                                 edge='start'
@@ -77,6 +84,7 @@ export const Header: React.FC = () => {
                                 onClick={handleMenuOpen}>
                                 <MenuIcon />
                             </IconButton>
+
                             <Menu
                                 anchorEl={menuAnchorEl}
                                 open={Boolean(menuAnchorEl)}
@@ -85,31 +93,19 @@ export const Header: React.FC = () => {
                                     backgroundColor: 'rgba(0, 0, 0, 0.5)',
                                     '& .MuiPaper-root': {
                                         width: '100%',
+                                        px: 2,
+                                        py: 1,
                                     },
                                 }}>
-                                {routes.map(({ name, route }, index) => (
-                                    <MenuItem
-                                        key={`${route}-${index}`}
-                                        onClick={handleMenuClose}
-                                        sx={{
-                                            a: {
-                                                // color: isActive(route)
-                                                //     ? 'primary.main'
-                                                //     : 'text.primary',
-                                                textDecoration: 'none',
-                                            },
-                                        }}
-                                        disableRipple>
-                                        <NextLink href={`/${route}`} passHref>
-                                            {name}
-                                        </NextLink>
-                                    </MenuItem>
-                                ))}
+                                <CustomMenuItems
+                                    menuItems={routes}
+                                    currentRoute={currentRoute}
+                                    handleMenuClose={handleMenuClose}
+                                    isTablet
+                                />
                             </Menu>
                         </>
-                    )}
-
-                    {!isTablet && (
+                    ) : (
                         <Box
                             sx={{
                                 display: 'flex',

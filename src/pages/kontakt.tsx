@@ -67,32 +67,26 @@ const Kontakt = () => {
     };
 
     const formatPhoneNumber = (phoneNumber: string, countryCode: string): string => {
-        // Remove all non-digit characters from the phone number
         const digits = phoneNumber.replace(/\D/g, '');
-
-        // Retrieve the example phone number for the selected country code
         const examplePhoneNumber = getPhoneNumberLabel(countryCode);
 
         let formattedPhoneNumber = '';
         let digitIndex = 0;
 
-        // Iterate over the example phone number and insert digits from the input
         for (let i = 0; i < examplePhoneNumber.length; i++) {
             const char = examplePhoneNumber.charAt(i);
 
             if (/\d/.test(char)) {
-                // If the character is a digit, insert the corresponding digit from the input
                 if (digitIndex < digits.length) {
                     formattedPhoneNumber += digits[digitIndex++];
                 } else {
-                    break; // Stop iterating if there are no more digits to insert
+                    break;
                 }
             } else {
-                // If the character is not a digit, insert it as is
                 if (digits[digitIndex] !== ' ') {
                     formattedPhoneNumber += char;
                 } else {
-                    digitIndex++; // Skip the space from the input when deleting
+                    digitIndex++;
                 }
             }
         }

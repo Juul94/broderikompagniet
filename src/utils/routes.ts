@@ -6,7 +6,7 @@ interface RoutesProps {
 
 const routes: RoutesProps[] = [
     {
-        name: 'Home',
+        name: 'Forside',
         route: '',
     },
     {
@@ -34,7 +34,7 @@ const routes: RoutesProps[] = [
         route: 'grafisk-arbejde',
     },
     {
-        name: 'Kategori',
+        name: 'Kategorier',
         children: [
             {
                 name: 'Dåbskjoler',
@@ -49,6 +49,10 @@ const routes: RoutesProps[] = [
                 route: 'badges-og-maerker',
             },
         ],
+    },
+    {
+        name: 'Kontakt',
+        route: 'kontakt',
     },
 ];
 

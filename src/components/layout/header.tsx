@@ -28,14 +28,6 @@ export const Header: React.FC = () => {
         setMenuAnchorEl(null);
     };
 
-    const isActive = (route: string | undefined, currentRoute: string | boolean) => {
-        if (`/${route}` === currentRoute) {
-            return 'primary.main';
-        }
-
-        return 'inherit';
-    };
-
     useEffect(() => {
         setCurrentRoute(pathName);
     }, [pathName]);
@@ -91,7 +83,7 @@ export const Header: React.FC = () => {
                                 onClose={handleMenuClose}
                                 sx={{
                                     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                                    '& .MuiPaper-root': {
+                                    '.MuiPaper-root': {
                                         width: '100%',
                                         px: 2,
                                         py: 1,

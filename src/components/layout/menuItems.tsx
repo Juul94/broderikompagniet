@@ -26,7 +26,9 @@ const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({
     const open = Boolean(anchorEl);
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
+        if (anchorEl !== event.currentTarget) {
+            setAnchorEl(event.currentTarget);
+        }
     };
 
     const handleClose = () => {
@@ -46,9 +48,11 @@ const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({
         open: boolean,
         children?: MenuItem[],
     ) => {
-        if (`/${route}` === currentRoute || open) {
-            return 'primary.main';
-        } else if (children && children.some((child) => `/${child.route}` === currentRoute)) {
+        if (
+            `/${route}` === currentRoute ||
+            open ||
+            (children && children.some((child) => `/${child.route}` === currentRoute))
+        ) {
             return 'primary.main';
         } else {
             return 'text.primary';
@@ -134,6 +138,7 @@ const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({
                         aria-haspopup='true'
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
+                        onMouseOver={handleClick}
                         disableRipple
                         sx={{
                             textTransform: 'capitalize',

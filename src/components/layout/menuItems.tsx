@@ -36,7 +36,7 @@ const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({
     };
 
     const IsActive = (route: string | undefined, currentRoute: string | boolean) => {
-        if (`/${route}` === currentRoute) {
+        if (route && currentRoute && currentRoute.toString().includes(route)) {
             return 'primary.main';
         }
         return 'inherit';
@@ -49,9 +49,25 @@ const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({
         children?: MenuItem[],
     ) => {
         if (
-            `/${route}` === currentRoute ||
-            open ||
-            (children && children.some((child) => `/${child.route}` === currentRoute))
+            route &&
+            currentRoute &&
+            (currentRoute.toString().includes(route) ||
+                open ||
+                (children &&
+                    children.some((child) => {
+                        return (
+                            child.route &&
+                            currentRoute.toString().includes(`/${child.route}`) &&
+                            !currentRoute.toString().endsWith(`/${child.route}`)
+                        );
+                    })))
+        ) {
+            return 'primary.main';
+        } else if (
+            children &&
+            children.some(
+                (child) => child.route && currentRoute.toString().includes(`/${child.route}`),
+            )
         ) {
             return 'primary.main';
         } else {

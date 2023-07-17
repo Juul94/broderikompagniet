@@ -10,7 +10,7 @@ const Galleri = () => {
 
             <NewSection>
                 <Typography>
-                    Her er et lille udvalg af nogle af de utallige opgaver som vi har påtagers os.
+                    Her er et lille udvalg af nogle af de utallige opgaver som vi har påtaget os.
                 </Typography>
 
                 <NewSection>

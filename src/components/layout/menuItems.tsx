@@ -1,114 +1,129 @@
-import { useState } from 'react';
-import { MenuItem, MenuList, Popover, Typography } from '@mui/material';
+import { MenuItem, Menu, Typography, Button } from '@mui/material';
 import NextLink from 'next/link';
+import { useState } from 'react';
 
-interface RouteItem {
+interface MenuItem {
     name: string;
-    route: string;
+    route?: string | undefined;
+    children?: MenuItem[];
 }
-
-interface RouteGroup {
-    name: string;
-    route: RouteItem[];
-}
-
-type MenuItemType = RouteItem | RouteGroup;
 
 interface CustomMenuItemsProps {
-    menuItems: MenuItemType[];
+    menuItems: MenuItem[];
+    currentRoute: string | boolean;
 }
 
-const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({ menuItems }) => {
-    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+const CustomMenuItems: React.FC<CustomMenuItemsProps> = ({ menuItems, currentRoute }) => {
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-    const handleOpenPopover = (event: React.MouseEvent<HTMLElement>) => {
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClosePopover = () => {
+    const handleClose = () => {
         setAnchorEl(null);
     };
 
-    const isPopoverOpen = Boolean(anchorEl);
+    const IsActive = (route: string | undefined, currentRoute: string | boolean) => {
+        if (`/${route}` === currentRoute) {
+            return 'primary.main';
+        }
+        return 'inherit'; // Default color for non-active children
+    };
 
-    return (
-        <>
-            {menuItems.map((menuItem, index) => {
-                if ('route' in menuItem && Array.isArray(menuItem.route)) {
-                    // Menu item with children
-                    const { name, route: children } = menuItem;
+    const IsActiveParent = (
+        route: string | undefined,
+        currentRoute: string | boolean,
+        open: boolean,
+        children?: MenuItem[],
+    ) => {
+        if (`/${route}` === currentRoute || open) {
+            return 'primary.main';
+        } else if (children && children.some((child) => `/${child.route}` === currentRoute)) {
+            return 'primary.main'; // If any child is active, make the parent active
+        } else {
+            return 'text.primary';
+        }
+    };
 
-                    return (
-                        <>
-                            <MenuItem
-                                key={name}
-                                disableRipple
-                                onClick={handleOpenPopover}
-                                sx={{
-                                    py: 0,
-                                    px: '7.5px',
-                                    textAlign: 'right',
-                                    textDecoration: 'none',
-                                    '&:hover': {
-                                        backgroundColor: 'transparent',
-                                        color: 'primary.main',
-                                    },
-                                }}>
-                                <Typography>{name}</Typography>
-                            </MenuItem>
-                            <Popover
-                                open={isPopoverOpen}
-                                anchorEl={anchorEl}
-                                onClose={handleClosePopover}
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'left',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'left',
-                                }}>
-                                <MenuList autoFocusItem={isPopoverOpen}>
-                                    {children.map((child, childIndex) => (
-                                        <MenuItem
-                                            key={`${child.route}-${childIndex}`}
-                                            disableRipple
-                                            onClick={() => {
-                                                // Handle child menu item click here
-                                            }}>
-                                            {child.name}
-                                        </MenuItem>
-                                    ))}
-                                </MenuList>
-                            </Popover>
-                        </>
-                    );
-                }
+    const renderMenuItem = (menuItem: MenuItem) => {
+        const { name, route, children } = menuItem;
 
-                // Regular menu item
-                const { name, route } = menuItem;
+        if (children && children.length > 0) {
+            return (
+                <>
+                    <Button
+                        id='basic-button'
+                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-haspopup='true'
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                        disableRipple
+                        sx={{
+                            textTransform: 'capitalize',
+                            color: IsActiveParent(route, currentRoute, open, children),
+                            transition: 'none',
+                            '&:hover': {
+                                backgroundColor: 'transparent',
+                                color: 'primary.main',
+                                transition: 'none',
+                            },
+                        }}>
+                        <Typography>Kategori</Typography>
+                    </Button>
 
-                return (
-                    <NextLink key={`${route}-${index}`} href={`/${route}`} passHref>
-                        <MenuItem
-                            disableRipple
-                            sx={{
-                                py: 0,
-                                px: '7.5px',
-                                textAlign: 'right',
-                                textDecoration: 'none',
-                                '&:hover': {
-                                    backgroundColor: 'transparent',
-                                    color: 'primary.main',
-                                },
-                            }}>
-                            {name}
-                        </MenuItem>
-                    </NextLink>
-                );
-            })}
-        </>
-    );
+                    <Menu
+                        id='basic-menu'
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}>
+                        {children.map((child, index: number) => (
+                            <NextLink
+                                key={`${child.name}-${index}`}
+                                href={`/${child.route}`}
+                                passHref>
+                                <MenuItem disableRipple onClick={handleClose}>
+                                    <Typography
+                                        sx={{
+                                            color: IsActive(child.route, currentRoute),
+                                        }}>
+                                        {child.name}
+                                    </Typography>
+                                </MenuItem>
+                            </NextLink>
+                        ))}
+                    </Menu>
+                </>
+            );
+        } else {
+            return (
+                <NextLink key={name} href={`/${route}`} passHref>
+                    <MenuItem
+                        disableRipple
+                        sx={{
+                            py: 0,
+                            px: '7.5px',
+                            textAlign: 'right',
+                            textDecoration: 'none',
+                            color: IsActive(route, currentRoute),
+                            '&:hover': {
+                                backgroundColor: 'transparent',
+                                color: 'primary.main',
+                            },
+                        }}>
+                        <Typography>{name}</Typography>
+                    </MenuItem>
+                </NextLink>
+            );
+        }
+    };
+
+    return <>{menuItems.map(renderMenuItem)}</>;
 };
 
 export default CustomMenuItems;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -18,8 +18,8 @@ export const Header: React.FC = () => {
 
     const pathName = typeof window !== 'undefined' && window.location.pathname;
 
-    const [menuAnchorEl, setMenuAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [currentRoute, setCurrentRoute] = React.useState<string | false>('');
+    const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
+    const [currentRoute, setCurrentRoute] = useState<string | boolean>('');
 
     const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
         setMenuAnchorEl(event.currentTarget);
@@ -27,12 +27,6 @@ export const Header: React.FC = () => {
 
     const handleMenuClose = () => {
         setMenuAnchorEl(null);
-    };
-
-    const isActive = (route: string) => {
-        if (`/${route}` === currentRoute) {
-            return true;
-        }
     };
 
     useEffect(() => {
@@ -122,7 +116,7 @@ export const Header: React.FC = () => {
                                 flexDirection: 'row',
                                 alignItems: 'center',
                             }}>
-                            <CustomMenuItems menuItems={routes} />
+                            <CustomMenuItems menuItems={routes} currentRoute={currentRoute} />
                         </Box>
                     )}
                 </Toolbar>

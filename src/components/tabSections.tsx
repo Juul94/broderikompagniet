@@ -31,7 +31,7 @@ const TabbedSections: React.FC<TabbedSectionsProps> = ({ sections, children }) =
                 scrollButtons
                 allowScrollButtonsMobile>
                 {sections.map((section, index) => (
-                    <Tab key={index} label={section} />
+                    <Tab disableRipple key={index} label={section} />
                 ))}
             </ScrollableTabsButtonAuto>
 
